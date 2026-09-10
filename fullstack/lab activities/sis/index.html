@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AJAX Student Information</title>
+</head>
+
+<body>
+
+    <h2>Student Information</h2>
+
+    <button onclick="getStudent()">Get Student Details</button>
+
+    <div id="studentInfo"></div>
+
+    <script>
+
+        function getStudent() {
+
+            // 1. Open the connection / Create AJAX object
+            var xhr = new XMLHttpRequest();
+
+            // 2. Request Initialization - Setting the URL
+            var url = "student.txt";
+
+            // 3. Open the connection
+            xhr.open("GET", url, true);
+
+            // 4. Use callback method
+            xhr.onreadystatechange = function() {
+
+                if (xhr.readyState == 4 && xhr.status == 200) {
+
+                    document.getElementById("studentInfo").innerHTML =
+                        xhr.responseText;
+                }
+            };
+
+            // 5. Send the request
+            xhr.send();
+        }
+
+    </script>
+
+</body>
+</html>
